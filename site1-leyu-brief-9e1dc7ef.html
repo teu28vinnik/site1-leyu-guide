@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leyu · 站点介绍与可信说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f2f5;
+            color: #2c3e4f;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 3rem 2rem 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d2a3a;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #4f637b;
+            max-width: 640px;
+            margin: 0 auto 1.2rem;
+            border-left: 3px solid #bac8d9;
+            padding-left: 1.2rem;
+            text-align: left;
+        }
+
+        .hero .btn-soft {
+            display: inline-block;
+            background: #eef2f7;
+            border: 1px solid #d0dae6;
+            border-radius: 40px;
+            padding: 0.5rem 1.8rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1f3a5c;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .hero .btn-soft:hover {
+            background: #e2e9f2;
+            border-color: #a8b9cf;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e3e9f0;
+            transition: box-shadow 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d2d3f;
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #eef3f9;
+            display: inline-block;
+        }
+
+        .card p, .card li {
+            font-size: 0.96rem;
+            color: #3a4b5e;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 0.25rem 0 0.25rem 1.2rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0.1rem;
+            color: #7c8fa5;
+            font-weight: bold;
+        }
+
+        .highlight-list span {
+            background: #f5f8fc;
+            padding: 0.1rem 0.4rem;
+            border-radius: 6px;
+            font-weight: 450;
+            color: #1f3e61;
+        }
+
+        /* 全宽卡片 */
+        .card-wide {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e3e9f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .card-wide h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1d2d3f;
+        }
+
+        .faq-item {
+            margin-bottom: 0.9rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1d2d3f;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item p {
+            margin-left: 0.5rem;
+            color: #3f546b;
+            font-size: 0.95rem;
+        }
+
+        .inline-link {
+            color: #1f4d7a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #bccfe3;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #1f4d7a;
+            color: #0b2a46;
+        }
+
+        /* 提示条 */
+        .note-box {
+            background: #f7faff;
+            border-left: 4px solid #b2c9e0;
+            padding: 1rem 1.6rem;
+            border-radius: 16px;
+            font-size: 0.92rem;
+            color: #2b4159;
+            margin: 1.5rem 0 0.5rem;
+            border: 1px solid #e2edf7;
+        }
+
+        .note-box a {
+            font-weight: 500;
+        }
+
+        /* 底部 */
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6f8199;
+            padding-top: 1.2rem;
+            border-top: 1px solid #dee6f0;
+            margin-top: 1rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card-wide {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- hero -->
+        <div class="hero">
+            <h1>leyu · 一处安静的站点</h1>
+            <div class="tagline">
+                不是每个网站都需要热闹的入口与浮夸的标语。<br>
+                这里只是把该介绍的内容写清楚，把该有的信任一点点说透。
+            </div>
+            <a href="https://site1-leyu.com" class="btn-soft">leyu</a>
+            <div style="margin-top: 0.6rem; font-size:0.85rem; color:#61778f;">—— 可先浏览下文，再决定是否前往</div>
+        </div>
+
+        <!-- 卡片区 2列 -->
+        <div class="card-grid">
+            <div class="card">
+                <h2>站点摘要</h2>
+                <p>这是一个以信息承载为主的个人/小型项目站点，内容围绕日常记录、工具分享与轻量服务展开。我们不追求流量，也不设限访问门槛。如果你恰好需要一份不吵闹的参考，或许 <a href="https://site1-leyu.com" class="inline-link">leyu</a> 会是一个顺手的去处。</p>
+                <p style="margin-top:0.8rem;">站点运行在标准静态环境中，保持简洁的加载体验，没有冗余追踪脚本。</p>
+            </div>
+            <div class="card">
+                <h2>亮点速览</h2>
+                <ul class="highlight-list">
+                    <li><span>轻内容</span> —— 每页聚焦一个话题，没有信息轰炸</li>
+                    <li><span>低维护感</span> —— 更新频率不固定，但每篇都经过斟酌</li>
+                    <li><span>无广告</span> —— 页面干净，不被第三方打扰</li>
+                    <li><span>可引用</span> —— 部分内容带有注释来源，适合参考</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 使用建议 + 场景 -->
+        <div class="card-wide">
+            <h2>使用建议 · 适合这样打开</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.2rem 2rem;">
+                <div style="flex: 1; min-width: 180px;">
+                    <p style="font-weight:500;">✔ 当作一个普通的知识角落</p>
+                    <p>不需要注册，也不需要记住密码。直接访问 <a href="https://site1-leyu.com" class="inline-link">leyu</a> 即可浏览当前公开内容。适合在碎片时间里读一篇短文，或查找某个条款说明。</p>
+                </div>
+                <div style="flex: 1; min-width: 180px;">
+                    <p style="font-weight:500;">✔ 适合对比与验证</p>
+                    <p>如果你正在收集不同站点的信息，可以把这里作为一个中立参考。站点内容不刻意倾向，保持叙述的平实。</p>
+                </div>
+            </div>
+            <div class="note-box">
+                ⚡ 提示：本站不含任何金融、医疗或法律建议，所有文字仅代表作者个人经验或整理，请结合实际情况使用。
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 与 可信说明 -->
+        <div class="card-wide">
+            <h2>常见疑问 & 可信说明</h2>
+            <div class="faq-item">
+                <strong>Q：这个站点持续更新吗？</strong>
+                <p>内容会不定期补充，但没有固定排期。你可以把页面加入书签，隔段时间回来看一眼。站点首页始终展示最新的一篇摘要。</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q：数据是否安全？</strong>
+                <p>站点部署在标准 HTTPS 环境下，不收集访客个人信息，也没有评论区或表单提交。你可以放心浏览，没有任何隐藏的追踪器。</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q：我可以转载或引用这里的内容吗？</strong>
+                <p>大部分原创内容采用 CC BY-NC 4.0 许可，署名来源即可。具体每篇文章底部会有标注。如果你需要商用，建议先通过站点页脚邮件联系作者确认。</p>
+            </div>
+            <div style="margin-top:1rem; border-top:1px solid #e5edf5; padding-top:1rem; font-size:0.93rem;">
+                <p>关于可信度：这个站点没有广告软文，也没有联盟链接。每一条外部引用都标注了来源。如果你发现任何不准确的地方，欢迎通过 <a href="https://site1-leyu.com" class="inline-link">leyu</a> 页面底部的联系方式反馈。</p>
+            </div>
+        </div>
+
+        <!-- 额外的场景/引导 -->
+        <div class="card-grid" style="margin-bottom:1.2rem;">
+            <div class="card">
+                <h2>适合这样的你</h2>
+                <ul>
+                    <li>厌烦弹窗和自动播放视频的读者</li>
+                    <li>想要快速了解某个概念，不被算法推荐带走</li>
+                    <li>寻找一个“不装样子”的个人站点做参考</li>
+                    <li>偶尔需要引用一段朴素、有出处的文字</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>不适合这样的场景</h2>
+                <ul>
+                    <li>寻找实时新闻或频繁更新的博客</li>
+                    <li>需要交互式工具或下载资源</li>
+                    <li>希望通过网站获取医疗/投资建议</li>
+                    <li>对页面设计有极高视觉要求</li>
+                </ul>
+                <p style="margin-top:0.6rem; font-size:0.88rem;">如果以上符合你的需求，或许可以关掉这个页面，节约一点时间。</p>
+            </div>
+        </div>
+
+        <!-- 最后的引导 自然嵌入链接 -->
+        <div style="text-align: center; background: #ffffffdb; border-radius: 40px; padding: 1.2rem 1.8rem; border:1px solid #e0e8f2; backdrop-filter: blur(2px);">
+            <p style="font-size:1rem;">说到底，一个站点值不值得点开，只有亲自看过才知道。<br>如果你愿意花三分钟，不妨去 <a href="https://site1-leyu.com" class="inline-link" style="font-size:1.05rem;">leyu</a> 转一圈，也许正是你需要的那种安静。</p>
+        </div>
+
+        <div class="footer-note">
+            <span>leyu · 保持小规模，保持透明</span>
+        </div>
+    </div>
+</body>
+</html>
